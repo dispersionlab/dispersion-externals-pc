@@ -1,0 +1,6 @@
+max objectfile . dot;
+max objectfile _ underscore;
+max objectfile __ underscoremulti;
+max objectfile db*~ dbmult~;
+max objectfile pi pi_constant;
+max objectfile e euler_constant;

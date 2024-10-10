@@ -1,0 +1,40 @@
+{
+	"name" : "CNMAT Externals",
+	"displayname" : "",
+	"version" : "1.0.5",
+	"author" : "CNMAT",
+	"authors" : [  ],
+	"description" : "A collection of Max tools created by researchers at CNMAT in Berkeley, CA.",
+	"tags" : [  ],
+	"website" : "http://cnmat.berkeley.edu",
+	"extends" : "",
+	"extensible" : 0,
+	"max_version_min" : "none",
+	"max_version_max" : "none",
+	"os" : 	{
+		"macintosh" : 		{
+			"min_version" : "10.7.x",
+			"platform" : [ "ia32", "x64", "aarch64" ]
+		}
+,
+		"windows" : 		{
+			"min_version" : "7",
+			"platform" : [ "ia32", "x64" ]
+		}
+
+	}
+,
+	"homepatcher" : "CNMAT_Externals_Overview.maxpat",
+	"filelist" : 	{
+		"externals" : [ "2threshattack~.mxe64", "2threshattack~.mxo", "accumulate~.mxe64", "accumulate~.mxo", "bench.mxe64", "bench.mxo", "bench~.mxe64", "bench~.mxo", "bpf.mxe64", "bpf.mxo", "cambio~.mxe64", "cambio~.mxo", "cnmatrix~.mxe64", "cnmatrix~.mxo", "decaying-sinusoids~.mxe64", "decaying-sinusoids~.mxo", "deinterleave.mxe64", "deinterleave.mxo", "firbank~.mxo", "gridpanel.mxe64", "gridpanel.mxo", "harmonics~.mxe64", "harmonics~.mxo", "interleave.mxe64", "interleave.mxo", "lcm.mxe64", "lcm.mxo", "list-accum.mxe64", "list-interpolate.mxe64", "list-interpolate.mxo", "migrator.mxe64", "migrator.mxo", "OpenSoundControl.mxe64", "OpenSoundControl.mxo", "OSC-route.mxe64", "OSC-route.mxo", "OSC-schedule.mxe64", "OSC-schedule.mxo", "OSC-timetag.mxe64", "OSC-timetag.mxo", "oscillators~.mxe64", "oscillators~.mxo", "peqbank~.mxe64", "peqbank~.mxo", "poly.bus~.mxe64", "poly.bus~.mxo", "poly.send~.mxe64", "poly.send~.mxo", "printit.mxe64", "printit.mxo", "rbfi.mxe64", "rbfi.mxo", "res-transform.mxe64", "res-transform.mxo", "resdisplay.mxe64", "resdisplay.mxo", "resonators~.mxe64", "resonators~.mxo", "roughness.mxe64", "roughness.mxo", "SDIF-buffer.mxe64", "SDIF-buffer.mxo", "SDIF-fileinfo.mxe64", "SDIF-fileinfo.mxo", "SDIF-info.mxe64", "SDIF-info.mxo", "SDIF-listpoke.mxe64", "SDIF-listpoke.mxo", "SDIF-ranges.mxe64", "SDIF-ranges.mxo", "SDIF-tuples.mxe64", "SDIF-tuples.mxo", "sinusoids~.mxe64", "sinusoids~.mxo", "slipOSC.mxe64", "slipOSC.mxo", "sphY.mxe64", "sphY.mxo", "thread.fork.mxe64", "thread.fork.mxo", "thread.join.mxe64", "thread.join.mxo", "thread.which.mxe64", "thread.which.mxo", "threefates.mxe64", "threefates.mxo", "trampoline.mxe64", "trampoline.mxo", "trend-report.mxe64", "trend-report.mxo", "vsnapshot~.mxe64", "vsnapshot~.mxo", "waveguide~.mxe64", "waveguide~.mxo", "xydisplay.mxe64", "xydisplay.mxo" ],
+		"help" : [ "2threshattack~.maxhelp", "accumulate~.maxhelp", "analyzer~.maxhelp", "bdist.maxhelp", "bench.maxhelp", "bench~.maxhelp", "bessel.maxhelp", "bpf.maxhelp", "brightness~.maxhelp", "cambio~.maxhelp", "cnmatrix~.maxhelp", "decaying-sinusoids~.maxhelp", "deinterleave.maxhelp", "firbank~.maxhelp", "gridpanel.maxhelp", "harmonics~.maxhelp", "interleave.maxhelp", "lcm.maxhelp", "list-accum.maxhelp", "list-interpolate.maxhelp", "loudness~.maxhelp", "midifile.maxhelp", "migrator.maxhelp", "OpenSoundControl.maxhelp", "OSC-route.maxhelp", "OSC-schedule.maxhelp", "OSC-timetag.maxhelp", "oscillators~.maxhelp", "peqbank~.maxhelp", "pitch~.maxhelp", "poly.bus~.maxhelp", "poly.send~.maxhelp", "printit.maxhelp", "randdist.maxhelp", "rbfi.maxhelp", "res-transform.maxhelp", "resdisplay.maxhelp", "resonators~.maxhelp", "roughness.maxhelp", "SDIF-buffer.maxhelp", "SDIF-fileinfo.maxhelp", "SDIF-info.maxhelp", "SDIF-listpoke.maxhelp", "SDIF-ranges.maxhelp", "SDIF-tuples.maxhelp", "sin-transform.maxhelp", "sinusoids~.maxhelp", "slipOSC.maxhelp", "sphY.maxhelp", "thread.fork.maxhelp", "thread.join.maxhelp", "thread.which.maxhelp", "threefates.maxhelp", "trampoline.maxhelp", "trend-report.maxhelp", "vsnapshot~.maxhelp", "waveguide~.maxhelp", "xydisplay.maxhelp" ],
+		"java-classes" : [ "midifile.class" ],
+		"media" : [ "bass.sdif", "Cbass.res.sdif", "ivory.speedy.loud.sdif", "lick5.sdif", "moanin.add.sdif" ],
+		"misc" : [ "firbank~.16band-512pt.wav", "poly.send-ex~.maxpat", "rbfihelp.json" ],
+		"docs" : [ "_c74_common.css", "_c74_common.xml", "_c74_common.xsl", "_c74_compat.html", "_c74_platform.xsl", "refpages/_c74_ref_common.xsl", "refpages/_c74_ref_modules.xml", "refpages/cnmat_ref/2threshattack~.maxref.xml", "refpages/cnmat_ref/_c74_contents.xml", "refpages/cnmat_ref/_c74_ref.xsl", "refpages/cnmat_ref/accumulate~.maxref.xml", "refpages/cnmat_ref/analyzer~.maxref.xml", "refpages/cnmat_ref/bdist.maxref.xml", "refpages/cnmat_ref/bench.maxref.xml", "refpages/cnmat_ref/bench~.maxref.xml", "refpages/cnmat_ref/bessel.maxref.xml", "refpages/cnmat_ref/bpf.maxref.xml", "refpages/cnmat_ref/cambio~.maxref.xml", "refpages/cnmat_ref/cnmatrix~.maxref.xml", "refpages/cnmat_ref/decaying-sinusoids~.maxref.xml", "refpages/cnmat_ref/deinterleave.maxref.xml", "refpages/cnmat_ref/gridpanel.maxref.xml", "refpages/cnmat_ref/harmonics~.maxref.xml", "refpages/cnmat_ref/interleave.maxref.xml", "refpages/cnmat_ref/lcm.maxref.xml", "refpages/cnmat_ref/list-interpolate.maxref.xml", "refpages/cnmat_ref/migrator.maxref.xml", "refpages/cnmat_ref/opensoundcontrol.maxref.xml", "refpages/cnmat_ref/osc-route.maxref.xml", "refpages/cnmat_ref/osc-schedule.maxref.xml", "refpages/cnmat_ref/osc-timetag.maxref.xml", "refpages/cnmat_ref/oscillators~.maxref.xml", "refpages/cnmat_ref/peqbank~.maxref.xml", "refpages/cnmat_ref/poly.bus~.maxref.xml", "refpages/cnmat_ref/poly.send~.maxref.xml", "refpages/cnmat_ref/printit.maxref.xml", "refpages/cnmat_ref/randdist.maxref.xml", "refpages/cnmat_ref/rbfi.maxref.xml", "refpages/cnmat_ref/res-transform.maxref.xml", "refpages/cnmat_ref/resdisplay.maxref.xml", "refpages/cnmat_ref/resonators~.maxref.xml", "refpages/cnmat_ref/roughness.maxref.xml", "refpages/cnmat_ref/sdif-buffer.maxref.xml", "refpages/cnmat_ref/sdif-fileinfo.maxref.xml", "refpages/cnmat_ref/sdif-info.maxref.xml", "refpages/cnmat_ref/sdif-listpoke.maxref.xml", "refpages/cnmat_ref/sdif-ranges.maxref.xml", "refpages/cnmat_ref/sdif-tuples.maxref.xml", "refpages/cnmat_ref/sinusoids~.maxref.xml", "refpages/cnmat_ref/slipOSC.maxref.xml", "refpages/cnmat_ref/sphY.maxref.xml", "refpages/cnmat_ref/template/template.xml", "refpages/cnmat_ref/thread.fork.maxref.xml", "refpages/cnmat_ref/thread.join.maxref.xml", "refpages/cnmat_ref/thread.which.maxref.xml", "refpages/cnmat_ref/threefates.maxref.xml", "refpages/cnmat_ref/trampoline.maxref.xml", "refpages/cnmat_ref/trend-report.maxref.xml", "refpages/cnmat_ref/vsnapshot~.maxref.xml", "refpages/cnmat_ref/waveguide~.maxref.xml", "refpages/cnmat_ref/xydisplay.maxref.xml" ],
+		"extras" : [ "CNMAT-Externals/CNMAT_Externals_Overview.maxpat" ]
+	}
+,
+	"c74install" : 1,
+	"installdate" : 3746219340
+}

@@ -1,0 +1,128 @@
+<jittershader name="rotation shader">
+	<description>
+	kaleidoscope
+	</description>
+	<param name="zoom" type="vec2" default="1. 1." />
+	<param name="offset" type="vec2" default="0. 0." />
+	<param name="theta" type="float" default="0." />
+	<param name="anchor" type="vec2" default="0.5 0.5" />
+	<param name="boundmode" type="int" default="0" />
+	<param name="tex0" type="int" default="0" />
+	<param name="tex1" type="int" default="1" />
+	<language name="glsl" version="1.0">
+		<bind param="zoom" program="vp" />
+		<bind param="offset" program="vp" />
+		<bind param="theta" program="vp" />
+		<bind param="anchor" program="vp" />
+		<bind param="boundmode" program="vp" />
+		<bind param="tex0" program="fp" />
+		<bind param="tex1" program="fp" />
+		<program name="vp" type="vertex">
+<![CDATA[
+
+varying vec2 texcoord0;
+varying vec2 texcoord1;
+varying vec2 texdim0;
+varying vec2 texdim1;
+varying vec2 texorient0;
+varying vec2 texorient1;
+varying vec2 no;
+varying float bound_is_0;
+varying float bound_is_1;
+varying float bound_is_2;
+varying float bound_is_3;
+varying float bound_is_4;
+varying float bound_is_0_1_3;
+varying float bound_not_1;
+
+uniform vec2 zoom;
+uniform vec2 offset;
+uniform float theta;
+uniform vec2 anchor;
+uniform int boundmode;
+
+void main()
+{
+    // perform standard transform on vertex
+    gl_Position = ftransform();
+
+    // transform texcoords
+    texcoord0 = vec2(gl_TextureMatrix[0] * gl_MultiTexCoord0);
+    texcoord1 = vec2(gl_TextureMatrix[1] * gl_MultiTexCoord1);
+    // extract the x and y scalars from the texture matrix to determine dimensions
+    texdim0 = vec2 (abs(gl_TextureMatrix[0][0][0]),abs(gl_TextureMatrix[0][1][1]));
+    texdim1 = vec2 (abs(gl_TextureMatrix[1][0][0]),abs(gl_TextureMatrix[1][1][1]));
+    // extract the sign for orientation
+    texorient0 = vec2 (gl_TextureMatrix[0][0][0]/texdim0.x,gl_TextureMatrix[0][1][1]/texdim0.y);
+    texorient1 = vec2 (gl_TextureMatrix[1][0][0]/texdim1.x,gl_TextureMatrix[1][1][1]/texdim1.y);
+
+	// perform rota transform (since linear, more efficient to do in vertex program)
+	mat2 sca = mat2 (1./zoom.x,0.,0.,1./zoom.y);//scaling matrix (zoom)
+	mat2 rot = mat2 (cos(theta),sin(theta),-sin(theta),cos(theta));//rotation matrix
+	no = ((((texcoord0-anchor*texdim0)*rot)*sca)+anchor*texdim0)+offset;
+
+	// setup our boundmode boolean scalars to reduce fragment program instruction count
+	bound_is_0 = float (boundmode==0);
+	bound_is_1 = float (boundmode==1);
+	bound_is_2 = float (boundmode==2);
+	bound_is_3 = float (boundmode==3);
+	bound_is_4 = float (boundmode==4);
+	bound_is_0_1_3 = float ((boundmode==0)||(boundmode==1)||(boundmode==3));
+	bound_not_1 = float (boundmode!=1);
+
+}
+
+]]>
+		</program>
+		<program name="fp" type="fragment">
+<![CDATA[
+
+//setup for 2 texture
+varying vec2 texcoord0;
+varying vec2 texcoord1;
+varying vec2 texdim0;
+varying vec2 no;
+varying float bound_is_0;
+varying float bound_is_1;
+varying float bound_is_2;
+varying float bound_is_3;
+varying float bound_is_4;
+varying float bound_is_0_1_3;
+varying float bound_not_1;
+
+uniform sampler2DRect tex0;
+uniform sampler2DRect tex1;
+const float pi=3.1415926;
+
+void main()
+{
+	// where is the point?
+	vec2 sizea = texdim0;
+	
+	//create boundmodes
+	vec2 no2 = mod(mod(no,sizea)+sizea,sizea);//wrap	
+	
+	vec2 no4 = mod(abs(no),sizea*2.);//folded coords
+	no4 = sizea-abs(no4-sizea);
+	
+	// sampler coord
+	vec2 tc = no*bound_is_0_1_3 + no2*bound_is_2 + no4*bound_is_4;
+	
+	//sample textures
+	vec4 smp0 = texture2DRect(tex0,tc);
+	vec4 smp1 = texture2DRect(tex1,sizea-texcoord0);
+	
+	vec2 outbound = sign(floor(no/sizea));//check for point>size
+	float boundchk = float(sign(float(outbound.x!=0.)+float(outbound.y!=0.)));
+	float checkm0 = bound_is_0*boundchk;
+	float checkm1 = bound_is_1*float(boundchk==0.);
+	vec4 ifb0 = mix(smp0,smp1,checkm0);//ignore
+	vec4 final = ifb0*bound_not_1 + ifb0*float(checkm1==1.);//clear
+	
+	// output texture
+	gl_FragColor = final;
+}
+]]>
+		</program>
+	</language>
+</jittershader>

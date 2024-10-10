@@ -1,0 +1,4 @@
+If running Mac OS 10.4.6 or later:
+you must have vecLib.framework installed in your /System/Library/Frameworks
+
+Universal Binary port by Wesley Smith
